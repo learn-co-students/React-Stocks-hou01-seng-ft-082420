@@ -4,12 +4,11 @@ import Stock from '../components/Stock'
 class PortfolioContainer extends Component {
 
   render() {
+    let newArray = this.props.portfolio
     return (
       <div>
         <h2>My Portfolio</h2>
-          {
-            //render your portfolio stocks here
-          }
+            {newArray.map(stock => <Stock stock={stock} stockAction={this.props.removePortfolio} />)}
       </div>
     );
   }
