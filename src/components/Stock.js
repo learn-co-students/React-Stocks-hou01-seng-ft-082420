@@ -1,21 +1,41 @@
 import React from 'react'
 
-const Stock = () => (
-  <div>
+class Stock extends React.Component{
+  constructor(){
+    super()
+    this.state={
+      owned: false
+    }
+  }
 
-    <div className="card">
+  handleClick = (e) => {
+    this.setState({
+      owned: !this.state.owned
+    })
+    
+    this.props.owned ? this.props.sellStock(this.props.stock) : this.props.buyStock(this.props.stock)  
+  }
+
+ 
+
+  render(){
+    return(
+
+      <div>
+
+    <div onClick = {this.handleClick} className="card">
       <div className="card-body">
-        <h5 className="card-title">{
-            //Company Name
-          }</h5>
-        <p className="card-text">{
-            //ticker: stock price
-          }</p>
+        <h5 className="card-title">{this.props.stock.name}</h5>
+        <p className="card-text">{this.props.stock.ticker} : ${this.props.stock.price} per share</p>
       </div>
     </div>
 
 
   </div>
-);
+)
+}
+
+
+        }
 
 export default Stock
